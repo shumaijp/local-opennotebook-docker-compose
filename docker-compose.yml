@@ -1,0 +1,45 @@
+services:
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  open_notebook:
+    image: lfnovo/open_notebook:v1-latest-single
+    ports:
+      - "8502:8502"  # Web UI
+      - "5055:5055"  # API
+    environment:
+      - API_URL=http://127.0.0.1:5055
+      - OLLAMA_API_BASE=http://ollama:11434
+      # Database connection (required)
+      - SURREAL_URL=ws://localhost:8000/rpc
+      - SURREAL_USER=root
+      - SURREAL_PASSWORD=root
+      - SURREAL_NAMESPACE=open_notebook
+      - SURREAL_DATABASE=production
+    volumes:
+      - notebook_data:/app/data
+      
+      - surreal_data:/mydata
+    depends_on:
+      - ollama
+    restart: always
+
+volumes:
+  ollama_data:
+  notebook_data:
+  surreal_data:
+
