@@ -7,7 +7,6 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
-    restart: unless-stopped
     deploy:
       resources:
         reservations:
@@ -32,11 +31,9 @@ services:
       - SURREAL_DATABASE=production
     volumes:
       - notebook_data:/app/data
-      
       - surreal_data:/mydata
     depends_on:
       - ollama
-    restart: always
 
 volumes:
   ollama_data:
