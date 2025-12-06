@@ -16,7 +16,7 @@ services:
       - "5055:5055"  # API
     environment:
       - API_URL=http://127.0.0.1:5055
-      - OLLAMA_API_BASE=http://ollama:11434
+      - OLLAMA_API_BASE=http://ollama-rag:11434
       # Database connection (required)
       - SURREAL_URL=ws://localhost:8000/rpc
       - SURREAL_USER=root
