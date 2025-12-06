@@ -2,11 +2,11 @@ services:
 
   ollama:
     image: ollama/ollama:latest
-    container_name: ollama-rag
+    container_name: ollama
     ports:
       - "11434:11434"
     volumes:
-      - ollama-data:/root/.ollama
+      - ollama_data:/root/.ollama
     deploy:
       resources:
         reservations:
@@ -15,9 +15,8 @@ services:
               count: 1
               capabilities: [gpu]
 
-  open-notebook:
+  open_notebook:
     image: lfnovo/open_notebook:v1-latest-single
-    container_name: open-notebook
     ports:
       - "8502:8502"  # Web UI
       - "5055:5055"  # API
@@ -31,12 +30,13 @@ services:
       - SURREAL_NAMESPACE=open_notebook
       - SURREAL_DATABASE=production
     volumes:
-      - notebook-data:/app/data
-      - surreal-data:/mydata
+      - notebook_data:/app/data
+      - surreal_data:/mydata
     depends_on:
       - ollama
 
 volumes:
-  ollama-data:
-  notebook-data:
-  surreal-data:
+  ollama_data:
+  notebook_data:
+  surreal_data:
+
