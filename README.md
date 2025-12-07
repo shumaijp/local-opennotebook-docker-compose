@@ -58,7 +58,8 @@ docker exec ollama-rag ollama pull mxbai-embed-large
 1. Open http://localhost:8502
 2. Go to Settings → Models
 3. Add:
-    - Chat model: qwen2.5:7b
+    - Chat model: gemma2:2b
+    - Transformation model: gemma2:2b
     - Embedding model: mxbai-embed-large
 
 ### 4. Start Using
