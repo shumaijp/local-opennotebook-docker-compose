@@ -35,7 +35,7 @@ Available models can be found at [Ollama Library](https://ollama.ai/library).
 #### Chat Model / Transformation Model
 
 ```
-docker exec ollama ollama pull qwen2.5:7b
+docker exec ollama-rag ollama pull gemma2:2b
 ```
 
 Recommended setup:
@@ -50,7 +50,7 @@ Recommended setup:
 #### Embedding Model
 
 ```
-docker exec ollama ollama pull mxbai-embed-large
+docker exec ollama-rag ollama pull mxbai-embed-large
 ```
 
 ### 3. Register Models in OpenNotebook
@@ -85,9 +85,9 @@ docker compose down -v
 ```
 
 Data is stored in Docker volumes:
-- ollama_data
+- ollama-data
     - Ollama models and cache
-- notebook_data
+- notebook-data
     - OpenNotebook files
-- surreal_data
+- surreal-data
     - DB storage

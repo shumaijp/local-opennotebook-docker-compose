@@ -38,6 +38,7 @@ services:
 
 volumes:
   ollama-data:
+    name: shared-ollama-data
   notebook-data:
   surreal-data:
 
