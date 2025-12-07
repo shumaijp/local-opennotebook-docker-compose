@@ -22,10 +22,10 @@ Run OpenNotebook locally with Ollama as the LLM provider — no external API req
 
 ```bash
 # GPU version (requires NVIDIA GPU)
-docker-compose up -d
+docker compose up -d
 
 # CPU version
-docker-compose -f docker-compose-cpu.yml up -d
+docker compose -f docker-compose-cpu.yml up -d
 ```
 
 ### 2. Install Models (via Ollama)
